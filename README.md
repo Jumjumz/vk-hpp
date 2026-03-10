@@ -1,1 +1,1 @@
-# vk-hpp
+# Vulkan Resources
