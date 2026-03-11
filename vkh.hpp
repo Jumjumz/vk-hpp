@@ -36,27 +36,6 @@ struct VulkanResources {
     // command pool
     vk::raii::CommandPool command_pool = nullptr;
 
-    // buffers
-    vk::raii::Buffer vertex_buffer = nullptr;
-    vk::raii::DeviceMemory vertex_memory = nullptr;
-    vk::raii::Buffer index_buffer = nullptr;
-    vk::raii::DeviceMemory index_memory = nullptr;
-
-    std::vector<vk::raii::Buffer> uniform_buffers;
-    std::vector<vk::raii::DeviceMemory> uniform_memories;
-    std::vector<void *> uniform_buffers_mapped;
-
-    // image
-    vk::raii::Image depth_image = nullptr;
-    vk::raii::DeviceMemory depth_memory = nullptr;
-    vk::raii::ImageView depth_image_view = nullptr;
-
-    // commands
-    std::vector<vk::raii::CommandBuffer> command_buffers;
-    std::vector<vk::raii::Semaphore> available_semaphores;
-    std::vector<vk::raii::Semaphore> finished_semaphores;
-    std::vector<vk::raii::Fence> inflight_fences;
-
     // descriptor pool
     vk::raii::DescriptorPool descriptor_pool = nullptr;
 
