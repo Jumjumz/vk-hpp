@@ -3,33 +3,23 @@
 
 #pragma once
 
-#include <optional>
 #include <vector>
 #include <vulkan/vulkan_raii.hpp>
 
 struct VulkanResources {
-    // validation layer
-    static inline const std::vector<char const *> validation_layers = {
-        "VK_LAYER_KHRONOS_validation"};
-
-#ifdef NDEBUG
-    static constexpr bool enable_validation_layers = false;
-#else
-    static constexpr bool enable_validation_layers = true;
-#endif
-    // core
-    static inline std::optional<vk::raii::Context> context;
-    static inline std::optional<vk::raii::Instance> instance = nullptr;
-    static inline std::optional<vk::raii::SurfaceKHR> surface_khr = nullptr;
+    // TODO: update to c vulkan
+    //  core
+    static vk::raii::Context context;
+    static vk::raii::Instance instance;
+    static vk::raii::SurfaceKHR surface_khr;
 
     // devices
-    static inline std::optional<vk::raii::PhysicalDevice> physical_device =
-        nullptr;
-    static inline std::optional<vk::raii::Device> logical_device = nullptr;
+    static vk::raii::PhysicalDevice physical_device;
+    static vk::raii::Device logical_device;
 
     // queue
-    static inline std::optional<vk::raii::Queue> graphics_queue = nullptr;
-    static inline std::optional<vk::raii::Queue> present_queue = nullptr;
+    static vk::raii::Queue graphics_queue;
+    static vk::raii::Queue present_queue;
 
     // surface config
     struct SurfaceConfig {
@@ -45,23 +35,33 @@ struct VulkanResources {
     };
 
     // swapchain
-    static inline vk::raii::SwapchainKHR swapchain_khr = nullptr;
+    static vk::raii::SwapchainKHR swapchain_khr;
 
     // shader module
-    static inline vk::raii::ShaderModule shader_module = nullptr;
+    static vk::raii::ShaderModule shader_module;
 
     // pipeline
-    static inline vk::raii::Pipeline graphics_pipeline = nullptr;
-    static inline vk::raii::PipelineLayout pipeline_layout = nullptr;
+    static vk::raii::Pipeline graphics_pipeline;
+    static vk::raii::PipelineLayout pipeline_layout;
 
     // layout
-    static inline vk::raii::DescriptorSetLayout descriptor_set_layout = nullptr;
+    static vk::raii::DescriptorSetLayout descriptor_set_layout;
 
     // command pool
-    static inline vk::raii::CommandPool command_pool = nullptr;
+    static vk::raii::CommandPool command_pool;
 
     // descriptor pool
-    static inline vk::raii::DescriptorPool descriptor_pool = nullptr;
+    static vk::raii::DescriptorPool descriptor_pool;
+
+    // validation layer
+    static inline const std::vector<char const *> validation_layers = {
+        "VK_LAYER_KHRONOS_validation"};
+
+#ifdef NDEBUG
+    static constexpr bool enable_validation_layers = false;
+#else
+    static constexpr bool enable_validation_layers = true;
+#endif
 };
 
 #endif // !VKH_HPP
